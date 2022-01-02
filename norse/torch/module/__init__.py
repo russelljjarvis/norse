@@ -12,6 +12,7 @@ from .encode import (
     SpikeLatencyEncoder,
     SpikeLatencyLIFEncoder,
 )
+from .iaf import IAFFeedForwardState, IAFCell, IAFParameters
 from .leaky_integrator import LI, LICell, LILinearCell, LIParameters, LIState
 from .lif import (
     LIFCell,
@@ -31,6 +32,7 @@ from .lif_adex import (
     LIFAdExParameters,
     LIFAdExState,
 )
+from .lif_box import LIFBoxFeedForwardState, LIFBoxParameters, LIFBoxCell
 from .lif_correlation import (
     LIFCorrelation,
     LIFCorrelationParameters,
@@ -50,6 +52,7 @@ from .lif_mc_refrac import LIFMCRefracRecurrentCell
 from .lif_refrac import (
     LIFRefracCell,
     LIFRefracRecurrentCell,
+    LIFRefracRecurrent,
     LIFRefracFeedForwardState,
     LIFRefracParameters,
     LIFRefracState,
@@ -85,11 +88,22 @@ __all__ = [
     "SignedPoissonEncoder",
     "SpikeLatencyEncoder",
     "SpikeLatencyLIFEncoder",
+    # Integrate-and-fire
+    "IAFFeedForwardState",
+    "IAFCell",
+    "IAFParameters",
+    # Izhikevich
+    "IzhikevichCell",
+    "IzhikevichRecurrentCell",
+    "Izhikevich",
+    "IzhikevichRecurrent",
+    # Leaky integrator
     "LI",
     "LICell",
     "LILinearCell",
     "LIParameters",
     "LIState",
+    # LIF
     "LIF",
     "LIFCell",
     "LIFRecurrent",
@@ -97,6 +111,7 @@ __all__ = [
     "LIFFeedForwardState",
     "LIFParameters",
     "LIFState",
+    # LIF AdEx
     "LIFAdEx",
     "LIFAdExCell",
     "LIFAdExFeedForwardState",
@@ -107,9 +122,15 @@ __all__ = [
     "LIFAdExRecurrent",
     "LIFAdExParameters",
     "LIFAdExState",
+    # LIF Box
+    "LIFBoxFeedForwardState",
+    "LIFBoxParameters",
+    "LIFBoxCell",
+    # LIF Correlation
     "LIFCorrelation",
     "LIFCorrelationParameters",
     "LIFCorrelationState",
+    # LIF Ex
     "LIFExCell",
     "LIFExRecurrentCell",
     "LIFEx",
@@ -121,6 +142,7 @@ __all__ = [
     "LIFMCRefracRecurrentCell",
     "LIFRefracCell",
     "LIFRefracRecurrentCell",
+    "LIFRefracRecurrent",
     "LIFRefracFeedForwardState",
     "LIFRefracParameters",
     "LIFRefracState",
@@ -134,8 +156,4 @@ __all__ = [
     "LSNNState",
     "RegularizationCell",
     "SequentialState",
-    "IzhikevichCell",
-    "IzhikevichRecurrentCell",
-    "Izhikevich",
-    "IzhikevichRecurrent",
 ]
