@@ -31,10 +31,10 @@ from typing import NamedTuple, Optional, Tuple
 import torch
 import torch.jit
 
-try:
-    import norse_op
-except ModuleNotFoundError:  # pragma: no cover
-    pass
+#try:
+#    import norse_op
+#except ModuleNotFoundError:  # pragma: no cover
+#    pass
 
 from norse.torch.functional.threshold import threshold
 
@@ -280,7 +280,7 @@ def lif_step_integral(
         recurrent_weights (torch.Tensor): synaptic weights for recurrent spikes
         p (LIFParameters): parameters of a leaky integrate and fire neuron
         dt (float): Integration timestep to use
-    
+
     Returns:
         A tuple of (spike output from all timesteps, neuron state from the final timestep)
     """
@@ -354,8 +354,9 @@ def lif_feed_forward_step(
         p (LIFParameters): parameters of a leaky integrate and fire neuron
         dt (float): Integration timestep to use
     """
-    z, v, i = norse_op.lif_super_feed_forward_step(input_tensor, state, p, dt)
-    return z, LIFFeedForwardState(v=v, i=i)
+    z_new, temp = _lif_feed_forward_step_jit(input_tensor, state, p, dt)
+
+    return z_new, temp
 
 
 def lif_feed_forward_integral(
